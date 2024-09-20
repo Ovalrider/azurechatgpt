@@ -4,6 +4,7 @@ import { Providers } from "@/features/providers";
 import { AI_NAME } from "@/features/theme/customise";
 import { cn } from "@/lib/utils";
 import { Inter } from "next/font/google";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,6 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full overflow-hidden">
+       <UserProvider>
       <body
         className={cn(inter.className, "flex w-full h-full bg-page-background")}
       >
@@ -38,6 +40,7 @@ export default function RootLayout({
           </ThemeProvider>
         </Providers>
       </body>
+      </UserProvider>
     </html>
   );
 }
